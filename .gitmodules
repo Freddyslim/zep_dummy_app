@@ -1,7 +1,6 @@
-[submodule "template"]
-	path = template
-	url = https://github.com/Freddyslim/frappe_app_template
-
 [submodule "erpnext_app_template"]
 	path = erpnext_app_template
 	url = https://github.com/seclution/erpnext_app_template.git
+[submodule "frappe_app_template"]
+	path = frappe_app_template
+	url = https://github.com/Freddyslim/frappe_app_template
