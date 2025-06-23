@@ -34,6 +34,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Sync templates
+        run: ./sync_templates.sh
+
 
       - name: Commit changes
         run: |
