@@ -2,6 +2,7 @@
 set -euo pipefail
 
 # Farben für Ausgabe
+
 GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
 RED="\033[1;31m"
@@ -28,6 +29,7 @@ sanitize_line() {
 }
 
 cd "$ROOT_DIR"
+
 changes_made=false
 
 while IFS= read -r raw_line || [ -n "$raw_line" ]; do
@@ -79,6 +81,7 @@ while IFS= read -r raw_line || [ -n "$raw_line" ]; do
             changes_made=true
         else
             echo -e "${GREEN}✅ Submodule $target already up-to-date${RESET}"
+
         fi
     elif [ -d "$target" ]; then
         echo -e "${YELLOW}⚠️  Directory $target exists but is not a submodule. Skipping...${RESET}"
@@ -115,4 +118,3 @@ if $changes_made; then
     echo -e "${GREEN}✅ Templates updated successfully.${RESET}"
 else
     echo -e "${YELLOW}ℹ️  No changes detected. Everything is up-to-date.${RESET}"
-fi
