@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - vendor-repos.txt
+      - custom_vendors.json
       - templates.txt
       - apps.json
       - '**/apps.json'
@@ -42,7 +42,7 @@ jobs:
           if [ -d vendor ]; then
             git add vendor
           fi
-          git add .gitmodules codex.json vendor-repos.txt apps.json templates.txt
+          git add .gitmodules codex.json apps.json templates.txt custom_vendors.json
           git add */apps.json
           if git diff --cached --quiet; then
             echo "No changes to commit"

@@ -37,7 +37,7 @@ jobs:
           if [ -d vendor ]; then
             git add vendor
           fi
-          git add .gitmodules codex.json vendor-repos.txt apps.json templates.txt
+          git add .gitmodules codex.json apps.json templates.txt
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

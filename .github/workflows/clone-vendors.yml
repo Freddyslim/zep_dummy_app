@@ -3,7 +3,6 @@ name: clone-vendors
 on:
   push:
     paths:
-      - vendor-repos.txt
       - custom_vendors.json
   workflow_dispatch:
 
