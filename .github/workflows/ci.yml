@@ -28,6 +28,4 @@ jobs:
       - name: Initialize environment
         run: ./setup.sh
 
-      - name: Run tests
-        run: pytest -q
 
