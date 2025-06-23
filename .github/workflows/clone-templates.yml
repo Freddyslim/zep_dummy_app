@@ -30,8 +30,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Sync templates
-        run: ./sync_templates.sh
-
+        run: ./scripts/sync_templates.sh
 
       - name: Commit changes
         run: |
