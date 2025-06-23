@@ -1,3 +1,3 @@
 # Add template repository URLs here
 # https://github.com/example/template-a
-https://github.com/seclution/erpnext_app_template
+https://github.com/seclution/erpnext_app_template.git
