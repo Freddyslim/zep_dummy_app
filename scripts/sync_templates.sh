@@ -15,12 +15,14 @@ while IFS= read -r repo; do
     [ -z "$repo" ] && continue
     name="$(basename "$repo" .git)"
     target="$ROOT_DIR/$name"
-    if [ ! -d "$target/.git" ]; then
-        echo "📥 Cloning $repo into $target"
-        git clone "$repo" "$target"
+    if grep -q "path = $name" "$ROOT_DIR/.gitmodules" 2>/dev/null; then
+        echo "🔄 Updating submodule $target"
+        git submodule update --remote "$target"
+    elif [ -d "$target" ]; then
+        echo "⚠️ $target exists but is not a submodule. Skipping..."
     else
-        echo "🔄 Updating $target"
-        git -C "$target" pull --ff-only
+        echo "🔗 Adding $repo as submodule at $target"
+        git submodule add "$repo" "$target"
     fi
     if [ -d "$target/instructions" ]; then
         echo "Found instructions in $target"
