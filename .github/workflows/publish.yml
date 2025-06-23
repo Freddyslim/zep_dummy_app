@@ -1,0 +1,23 @@
+name: publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+
+      - name: Prepare published branch
+        run: |
+          git checkout -B published
+          rm -rf vendor template apps.json DEV_INSTRUCTIONS.md custom_vendors.json
+          find . -name '.git*' -not -name '.git' -exec rm -rf {} +
+          git add -A
+          git commit -m "chore: publish"
+          git push -f origin published

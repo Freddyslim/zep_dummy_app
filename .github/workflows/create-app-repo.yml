@@ -1,0 +1,51 @@
+name: create-app-repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      app-name:
+        description: 'Name of the new app'
+        required: true
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Create app skeleton
+        run: |
+          APP=${{ inputs.app-name }}
+          mkdir -p apps/$APP/$APP
+          echo "__version__ = '0.0.1'" > apps/$APP/$APP/__init__.py
+          echo "Used framework versions:" > apps/$APP/README.md
+          echo "- Frappe $(jq -r '.frappe.tag' apps.json)" >> apps/$APP/README.md
+          echo "- Bench $(jq -r '.bench.tag' apps.json)" >> apps/$APP/README.md
+          echo '' >> apps/$APP/README.md
+          echo "Requirements:" >> apps/$APP/README.md
+          grep -v '^#' requirements.txt >> apps/$APP/README.md
+
+      - name: Commit app
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apps/${{ inputs.app-name }}
+          git commit -m "feat: scaffold app ${{ inputs.app-name }}"
+          git push
+
+      - name: Remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/create-app-repo.yml
+          git commit -m "chore: remove create-app-repo workflow"
+          git push

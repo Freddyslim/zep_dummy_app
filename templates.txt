@@ -1,0 +1,2 @@
+# Add template repository URLs here
+# https://github.com/example/template-a
