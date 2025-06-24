@@ -29,8 +29,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Sync templates
-        run: ./scripts/sync_templates.sh
+      - name: Clone vendors
+        run: ./scripts/clone_vendors.sh
 
       - name: Commit changes
         run: |
