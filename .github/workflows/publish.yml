@@ -16,6 +16,8 @@ jobs:
       - name: Prepare published branch
         run: |
           git checkout -B published
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           rm -rf vendor template apps.json DEV_INSTRUCTIONS.md custom_vendors.json
           find . -name '.git*' -not -name '.git' -exec rm -rf {} +
           git add -A
