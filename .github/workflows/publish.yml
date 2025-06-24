@@ -18,18 +18,26 @@ jobs:
 
       - name: Prepare published branch
         run: |
+          set -x
           git checkout -B published
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          echo "::group::Before cleanup"
+          ls -al
+          git submodule status || true
+          echo "::endgroup::"
+          git submodule deinit -f --all || true
           rm -rf vendor template apps.json DEV_INSTRUCTIONS.md custom_vendors.json
           rm -rf frappe_app_template erpnext_app_template template_frappe template_erpnext || true
           find . -maxdepth 1 -type d -name '*_app_template*' -exec rm -rf {} + || true
           if [ -f .gitmodules ]; then
             git config -f .gitmodules --get-regexp path | awk '{print $2}' | xargs -r rm -rf
           fi
-          git submodule deinit -f --all || true
           rm -rf .git/modules
           find . -name '.git*' -not -name '.git' -exec rm -rf {} +
+          echo "::group::After cleanup"
+          ls -al
+          echo "::endgroup::"
           git add -A
           git commit -m "chore: publish"
           git push -f origin published
