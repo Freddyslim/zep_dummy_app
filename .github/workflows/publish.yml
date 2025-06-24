@@ -22,6 +22,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           rm -rf vendor template apps.json DEV_INSTRUCTIONS.md custom_vendors.json
+          git submodule deinit -f --all || true
+          rm -rf .git/modules
           find . -name '.git*' -not -name '.git' -exec rm -rf {} +
           git add -A
           git commit -m "chore: publish"
