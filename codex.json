@@ -2,8 +2,9 @@
   "_comment": "Directories indexed by Codex. Adjust paths as needed.",
   "sources": [
     "apps/",
-    "vendor/bench/",
+    "vendor/erpnext/",
     "vendor/frappe/",
+    "vendor/bench/",
     "instructions/",
     "sample_data/"
   ]
