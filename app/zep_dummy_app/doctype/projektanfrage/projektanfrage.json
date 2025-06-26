@@ -1,0 +1,25 @@
+{
+ "doctype": "DocType",
+ "name": "Projektanfrage",
+ "module": "zep_dummy_app",
+ "custom": 1,
+ "autoname": "field:email",
+ "fields": [
+  {"fieldname": "auftragsart", "fieldtype": "Select", "label": "Auftragsart", "options": "Sanierung\nReparatur\nNotfall\nDachfenster\nEtwas Anderes", "reqd": 1},
+  {"fieldname": "anrede", "fieldtype": "Select", "label": "Anrede", "options": "Herr\nFrau"},
+  {"fieldname": "vorname", "fieldtype": "Data", "label": "Vorname", "reqd": 1},
+  {"fieldname": "nachname", "fieldtype": "Data", "label": "Nachname", "reqd": 1},
+  {"fieldname": "firma", "fieldtype": "Data", "label": "Firma"},
+  {"fieldname": "strasse", "fieldtype": "Data", "label": "Stra\u00dfe / Hausnr."},
+  {"fieldname": "plz", "fieldtype": "Data", "label": "Postleitzahl"},
+  {"fieldname": "ort", "fieldtype": "Data", "label": "Ort"},
+  {"fieldname": "handynummer", "fieldtype": "Data", "label": "Handynummer"},
+  {"fieldname": "email", "fieldtype": "Data", "label": "E-Mail", "reqd": 1},
+  {"fieldname": "details", "fieldtype": "Small Text", "label": "Details"},
+  {"fieldname": "attachment", "fieldtype": "Attach", "label": "Anhang"}
+ ],
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "Guest", "read": 1, "create": 1}
+ ]
+}
