@@ -32,13 +32,13 @@ jobs:
           echo "__version__ = '0.0.1'" > app/$APP/__init__.py
           echo "$APP" > app/$APP/modules.txt
           cat <<'EOF' > app/$APP/patches.txt
-[pre_model_sync]
-# Patches added in this section will be executed before doctypes are migrated
-# Read docs to understand patches: https://frappeframework.com/docs/v14/user/en/database-migrations
+          [pre_model_sync]
+          # Patches added in this section will be executed before doctypes are migrated
+          # Read docs to understand patches: https://frappeframework.com/docs/v14/user/en/database-migrations
 
-[post_model_sync]
-# Patches added in this section will be executed after doctypes are migrated
-EOF
+          [post_model_sync]
+          # Patches added in this section will be executed after doctypes are migrated
+          EOF
           touch app/$APP/config/__init__.py
           touch app/$APP/templates/__init__.py
           touch app/$APP/$APP/__init__.py
