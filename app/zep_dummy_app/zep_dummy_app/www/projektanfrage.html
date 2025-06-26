@@ -6,6 +6,7 @@
 <p>Vielen Dank für deine Anfrage.</p>
 {% else %}
 <form action="/projektanfrage" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 <div class="form-group">
 <label for="auftragsart">Auftragsart</label>
 <select class="form-control" name="auftragsart" id="auftragsart" required>
