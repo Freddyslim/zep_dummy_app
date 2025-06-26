@@ -1,0 +1,69 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<h1>Projektanfrage</h1>
+{% if success %}
+<p>Vielen Dank für deine Anfrage.</p>
+{% else %}
+<form action="/projektanfrage" method="post" enctype="multipart/form-data">
+<div class="form-group">
+<label for="auftragsart">Auftragsart</label>
+<select class="form-control" name="auftragsart" id="auftragsart" required>
+<option>Sanierung</option>
+<option>Reparatur</option>
+<option>Notfall</option>
+<option>Dachfenster</option>
+<option>Etwas Anderes</option>
+</select>
+</div>
+<div class="form-group">
+<label for="anrede">Anrede</label>
+<select class="form-control" name="anrede" id="anrede">
+<option>Herr</option>
+<option>Frau</option>
+</select>
+</div>
+<div class="form-group">
+<label for="vorname">Vorname</label>
+<input class="form-control" type="text" name="vorname" id="vorname" required>
+</div>
+<div class="form-group">
+<label for="nachname">Nachname</label>
+<input class="form-control" type="text" name="nachname" id="nachname" required>
+</div>
+<div class="form-group">
+<label for="firma">Firma</label>
+<input class="form-control" type="text" name="firma" id="firma">
+</div>
+<div class="form-group">
+<label for="strasse">Straße / Hausnr.</label>
+<input class="form-control" type="text" name="strasse" id="strasse">
+</div>
+<div class="form-group">
+<label for="plz">Postleitzahl</label>
+<input class="form-control" type="text" name="plz" id="plz">
+</div>
+<div class="form-group">
+<label for="ort">Ort</label>
+<input class="form-control" type="text" name="ort" id="ort">
+</div>
+<div class="form-group">
+<label for="handynummer">Handynummer</label>
+<input class="form-control" type="text" name="handynummer" id="handynummer">
+</div>
+<div class="form-group">
+<label for="email">E-Mail</label>
+<input class="form-control" type="email" name="email" id="email" required>
+</div>
+<div class="form-group">
+<label for="details">Details</label>
+<textarea class="form-control" name="details" id="details" rows="5"></textarea>
+</div>
+<div class="form-group">
+<label for="attachment">Anhang</label>
+<input class="form-control" type="file" name="attachment" id="attachment">
+</div>
+<button class="btn btn-primary" type="submit">Absenden</button>
+</form>
+{% endif %}
+{% endblock %}
