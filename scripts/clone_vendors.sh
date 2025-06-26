@@ -75,7 +75,7 @@ for app in "${!REPOS[@]}"; do
  jq -n "$filter" > "$ROOT_DIR/apps.json"
 
 # rebuild codex.json
-sources=("apps/")
+sources=("app/")
 for app in "${!REPOS[@]}"; do
     sources+=("vendor/$app/")
  done

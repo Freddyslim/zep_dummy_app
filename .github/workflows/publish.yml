@@ -35,6 +35,7 @@ jobs:
           fi
           rm -rf .git/modules
           find . -name '.git*' -not -name '.git' -exec rm -rf {} +
+          find . -mindepth 1 -maxdepth 1 ! -name 'app' ! -name '.git' -exec rm -rf {} +
           echo "::group::After cleanup"
           ls -al
           echo "::endgroup::"
